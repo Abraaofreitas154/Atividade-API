@@ -1,0 +1,139 @@
+/* Configurações Globais do Jogo */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte mais moderna */
+    
+    /* FUNDO VIBRANTE (Gradiente Pokebola) */
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 45%, #ffffff 45%, #ffffff 50%, #eee 50%, #eee 100%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Mantém o fundo fixo no mobile */
+
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* --- O NOVO CARD DO JOGO --- */
+.card-game {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    
+    /* Borda e Sombra Estilo Pokédex */
+    border: 10px solid #333; /* Borda grossa preta */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    
+    text-align: center;
+    max-width: 400px; /* Largura máxima boa para mobile */
+    width: 100%;
+    
+    /* Animação suave de entrada */
+    animation: entraCard 0.5s ease-out;
+}
+
+/* Área da Imagem do Pokémon */
+.image-container {
+    background: #5dade2; /* Fundo azul claro (céu) */
+    padding: 20px;
+    border-radius: 15px;
+    border: 5px solid #2980b9;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+/* --- O SEGREDO DA SILHUETA --- */
+.silhueta {
+    filter: brightness(0); /* Fica todo preto */
+    width: 200px;
+    height: 200px;
+    object-fit: contain; /* Garante que o pokémon não distorça */
+    transition: filter 0.8s ease-in-out, transform 0.2s;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5)); /* Sombra só na silhueta */
+}
+
+/* Estado Revelado */
+.revelado {
+    filter: brightness(1); /* Remove o preto e mostra as cores */
+    transform: scale(1.1); /* Dá um pequeno pulo */
+}
+
+/* Textos e Input */
+.card-game h2 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap; /* Melhora no mobile */
+}
+
+input {
+    flex-grow: 1;
+    padding: 12px;
+    border-radius: 20px;
+    border: 3px solid #ccc;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* BOTÕES ESTILO POKÉDEX */
+button {
+    padding: 12px 20px;
+    cursor: pointer;
+    background: #3498db; /* Azul profissional */
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: background 0.3s, transform 0.1s;
+    box-shadow: 0 4px 0 #2980b9; /* Efeito 3D de botão press-able */
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+button:active {
+    transform: translateY(2px); /* Efeito de clique */
+    box-shadow: 0 2px 0 #2980b9;
+}
+
+.btn-pular {
+    background: #f1c40f; /* Amarelo Pikachu */
+    color: #333;
+    box-shadow: 0 4px 0 #f39c12;
+    margin-top: 10px;
+}
+
+.btn-pular:hover {
+    background: #f39c12;
+}
+
+/* Animação de Entrada */
+@keyframes entraCard {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
