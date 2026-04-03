@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jogo interativo Quem é esse Pokémon - Desafio PWA para Senac">
+    <meta name="theme-color" content="#ff0000">
+    
+    <title>PokeQuiz PWA - Quem é esse Pokémon?</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/188/188987.png">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 class="logo-pwa">PokeQuiz Pro</h1>
+    </header>
+
+    <main id="app">
+        <div id="camera-section" style="display:none;">
+            <div class="video-wrapper">
+                <video id="video" autoplay playsinline></video>
+                <div class="scan-line"></div> </div>
+            <button class="btn-action close" onclick="fecharCamera()">✖ Fechar Scanner</button>
+        </div>
+
+        <div id="jogo-container">
+            <div class="loader">Buscando na Pokédex...</div>
+        </div>
+
+        <nav class="mobile-nav">
+            <button onclick="abrirCamera()" class="btn-hw">
+                <span>📸</span>
+                <small>Scanner</small>
+            </button>
+            <button onclick="novoDesafio()" class="btn-hw">
+                <span>🔄</span>
+                <small>Novo</small>
+            </button>
+        </nav>
+    </main>
+
+    <script src="script.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker registrado!', reg))
+                    .catch(err => console.err('Falha ao registrar SW', err));
+            });
+        }
+    </script>
+</body>
+</html>
